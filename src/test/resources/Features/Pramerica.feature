@@ -9,7 +9,7 @@ Feature: Data Testing
     Examples:
       | agentCode | username | password |
       | 70028763  | 70028763 | 420420   |
-#      | 70028420  | 70028763 | 420420   |
+      | 70028420  | 70028763 | 420420   |
 
   @test2
   Scenario Outline: Fetching Information from Database

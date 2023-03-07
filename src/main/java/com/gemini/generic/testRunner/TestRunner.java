@@ -6,6 +6,6 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/Features", glue = "com.gemini.generic", tags = "@test3")
+@CucumberOptions(features = "src/test/resources/Features", glue = "com.gemini.generic", tags = "@test")
 public class TestRunner {
 }

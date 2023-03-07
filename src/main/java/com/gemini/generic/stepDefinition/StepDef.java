@@ -156,7 +156,9 @@ public class StepDef {
 
     @Then("Validate details from {string}")
     public void validateDetailsFrom(String agentCode) {
-        MongoCollection<Document> collection = getCollection("mongodb+srv://SpeedBiz-QA-r:XwYNdyxbU8UiFoal@aceapp-devuat.ojbzu.mongodb.net","AceAppDev","signininfos");
+//        MongoCollection<Document> collection = getCollection("mongodb+srv://SpeedBiz-QA-r:XwYNdyxbU8UiFoal@aceapp-devuat.ojbzu.mongodb.net","AceAppDev","signininfos");
+        MongoCollection<Document> collection = MobileAction.getCollection("mongodb+srv://SpeedBiz-QA-r:XwYNdyxbU8UiFoal@aceapp-devuat.ojbzu.mongodb.net","AceAppDev","signininfos");
+
         Map<String, Object> profileDetails_DB = connectDB(collection,"agentCode",agentCode);
         for (Map.Entry<String, Object> map : profileDetails_DB.entrySet()) {
             System.out.println(map.getKey() + " : " + map.getValue());
@@ -191,16 +193,11 @@ public class StepDef {
         }
         System.out.println(agentCode);
         MobileAction.waitSec(10);
-        login(agentCode.get(1),"1234");
+
         for (String username : agentCode) {
-            MobileAction.waitSec(5);
-            login(username, "12345");
-            MobileAction.waitSec(5);
-            if (isElementDisplayed(Locator.errorDialog)) {
-                MobileAction.click(Locator.btn_errorDialogOK);
-            }
+            MobileAction.typeText(Locator.usernameInput, username);
+            MobileAction.waitSec(2);
             MobileAction.clearText(Locator.usernameInput);
-            MobileAction.clearText(Locator.passInput);
             MobileAction.waitSec(2);
         }
 
